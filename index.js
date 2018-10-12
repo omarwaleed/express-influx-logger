@@ -2,6 +2,15 @@ const influx = require('influx');
 const onFinished = require('on-finished');
 const moment = require('moment');
 
+/**
+ * @param {Object} options
+ * @param {string} options.host - InfluxDB host. Defaults to localhost
+ * @param {string} options.protocol - InfluxDB protocol. Either 'http' or 'https'. Defaults to http
+ * @param {number} options.port - InfluxDB port. Integer value. Defaults to 8086
+ * @param {string} options.database - InfluxDB database used for logging. Defaults to 'express-influx-logs'
+ * @param {string} options.username - InfluxDB username. Defaults to undefined. No username set
+ * @param {string} options.password - InfluxDB password. Defaults to undefined. No password set
+ */
 module.exports = (options) => {
 	// Destruct influxDB options
 	let { host, port, database = 'express-influx-logs',
