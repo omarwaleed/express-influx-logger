@@ -7,5 +7,15 @@
     "influx": "^5.0.7",
     "moment": "^2.22.2",
     "on-finished": "^2.3.0"
-  }
+  },
+  "contributes": [
+    "Omar Waleed <owezzat@gmail.com> (http://www.omarwaleed.com/)"
+  ],
+  "keywords": [
+    "express",
+    "influx",
+    "logger",
+    "log",
+    "middleware"
+  ]
 }
