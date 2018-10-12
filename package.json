@@ -1,5 +1,5 @@
 {
-  "name": "express-influx-log",
+  "name": "express-influx-logger",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
