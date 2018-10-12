@@ -1,0 +1,11 @@
+{
+  "name": "express-influx-log",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "influx": "^5.0.7",
+    "moment": "^2.22.2",
+    "on-finished": "^2.3.0"
+  }
+}
