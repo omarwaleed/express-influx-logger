@@ -23,9 +23,9 @@ module.exports = (middlewareOptions = {}) => {
 			{
 				measurement: 'response_time',
 				fields: {
-					startTime: influx.FieldType.INTEGER,
+					start_time: influx.FieldType.INTEGER,
 					duration: influx.FieldType.INTEGER,
-					responseStatus: influx.FieldType.INTEGER
+					response_status: influx.FieldType.INTEGER
 				},
 				tags: ['url', 'method']
 			},
