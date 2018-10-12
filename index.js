@@ -40,6 +40,22 @@ module.exports = (middlewareOptions = {}) => {
 		]
 	})
 
+	db.getDatabaseNames()
+	.then((names)=>{
+		let index = names.indexOf(database);
+		if(index < 0){
+			// database doesn't. Create database
+			return db.createDatabase(database);
+		}
+		return true;
+	})
+	.then((created)=>{
+		if(!created){
+			console.log(`Influx Database '${database}' created successfully`)
+		}
+	})
+	.catch((err)=>{throw Error(err)})
+
 	// Express middleware
 	return function(req, res, next){
 		req.__INFLUX_MIDDLEWARE_START_TIME__ = moment();
