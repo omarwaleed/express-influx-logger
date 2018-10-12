@@ -29,14 +29,14 @@ module.exports = (middlewareOptions = {}) => {
 				},
 				tags: ['url', 'method']
 			},
-			{
+			/* {
 				measurement: 'errors',
 				fields: {
 					name: influx.FieldType.STRING,
 					message: influx.FieldType.STRING
 				},
 				tags: []
-			}
+			} */
 		]
 	})
 
@@ -61,12 +61,13 @@ module.exports = (middlewareOptions = {}) => {
 		req.__INFLUX_MIDDLEWARE_START_TIME__ = moment();
 		onFinished(res, function(err){
 			if(err){
-				return db.writeMeasurement('errors', [{
+				/* return db.writeMeasurement('errors', [{
 					fields: {
 						name: err.name,
 						message: err.message
 					}
-				}])
+				}]) */
+				console.error(err);
 			}
 			let difference = moment().diff(req.__INFLUX_MIDDLEWARE_START_TIME__, 'ms');
 			db.writeMeasurement('response_time', [{
