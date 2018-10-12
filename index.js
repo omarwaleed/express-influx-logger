@@ -3,18 +3,18 @@ const onFinished = require('on-finished');
 const moment = require('moment');
 
 /**
- * @param {Object} options
- * @param {string} options.host - InfluxDB host. Defaults to localhost
- * @param {string} options.protocol - InfluxDB protocol. Either 'http' or 'https'. Defaults to http
- * @param {number} options.port - InfluxDB port. Integer value. Defaults to 8086
- * @param {string} options.database - InfluxDB database used for logging. Defaults to 'express-influx-logs'
- * @param {string} options.username - InfluxDB username. Defaults to undefined. No username set
- * @param {string} options.password - InfluxDB password. Defaults to undefined. No password set
+ * @param {Object} middlewareOptions
+ * @param {string} middlewareOptions.host - InfluxDB host. Defaults to localhost
+ * @param {string} middlewareOptions.protocol - InfluxDB protocol. Either 'http' or 'https'. Defaults to http
+ * @param {number} middlewareOptions.port - InfluxDB port. Integer value. Defaults to 8086
+ * @param {string} middlewareOptions.database - InfluxDB database used for logging. Defaults to 'express-influx-logs'
+ * @param {string} middlewareOptions.username - InfluxDB username. Defaults to undefined. No username set
+ * @param {string} middlewareOptions.password - InfluxDB password. Defaults to undefined. No password set
  */
-module.exports = (options) => {
+module.exports = (middlewareOptions = {}) => {
 	// Destruct influxDB options
 	let { host, port, database = 'express-influx-logs',
-			 username, password, protocol, options, pool } = options;
+			 username, password, protocol, options, pool } = middlewareOptions;
 	
 	// Configuring influxDB
 	const db = new influx.InfluxDB({
@@ -34,7 +34,8 @@ module.exports = (options) => {
 				fields: {
 					name: influx.FieldType.STRING,
 					message: influx.FieldType.STRING
-				}
+				},
+				tags: []
 			}
 		]
 	})
